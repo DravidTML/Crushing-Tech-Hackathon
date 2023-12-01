@@ -127,6 +127,6 @@ function showHideStep(stepnumber){
 }
 
 function hide(elementClass){
-    const hideEle = document.querySelector(`${elementClass}`);
+    const hideEle = document.querySelector(`.${elementClass}`);
     hideEle.classList.add("hide");
 }
