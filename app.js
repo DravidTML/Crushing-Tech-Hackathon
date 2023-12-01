@@ -103,3 +103,8 @@ function showHideStep(stepnumber){
         stepCont.style.backgroundColor = "#F3F3F3";
     }
 }
+
+function hide(){
+    const hideEle = document.querySelector(".plan-container");
+    hideEle.classList.add("hide");
+}
