@@ -1,0 +1,138 @@
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopify Admin</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="https://crushingit.tech/hackathon-assets/shopify-icon.svg">
+    <link rel="stylesheet" href="/app.css">
+  </head>
+  <body>
+    <section>
+      <div id="top_navigation_bar">
+        <div id="logo"></div>
+
+        <div class="search-bar-container"> 
+          <input type="text" class="search-bar" placeholder="Search">
+          <img class="search-icon" src="/images/search.svg">
+        </div>
+        <div class="tag">
+          <div class="tag-icon icon">
+            <img src="/images/bell.svg">
+          </div>
+          <div class="tag-name">
+            <span class="text-12-medium">Davii Collections</span>
+            <div>
+              <span class="text-12-medium">DC</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="main-container">
+        <div class="plan-container">
+          <div class="plan-container-main">
+            <span class="text-13-medium">Extend your trial for $1/month for 3 months on select plans.</span>  
+            <button id="plan">Select a plan</button>
+          </div>
+          <div class="icon">
+            <img src="/images/close.svg">
+          </div>
+        </div>
+
+        <div class="main-container-body">
+          <div class="guide-info">
+            <div class="hor">
+              <div class="hor-top">
+                <span class="text-14-semi-bold">Study guide</span>
+                <span class="text-13-regular">Use this personalized guide to get your store up and running.</span>
+              </div>
+              <div class="hor-bot">
+                <span id="completed-steps" class="text-12-regular">0/5 completed</span>
+                <div class="progress-bar">
+                  <div id="progress" class="progress"></div>
+                </div>
+              </div>
+            </div>
+
+            <div id="guide" class="guide-img" onclick="showHideGuide()"></div>
+          </div>
+
+          <div class="guide-body hide">
+            <div class="step" id="step-1-cont">
+              <div class="step-container">
+                <div class="status-img" id="step1Img" onclick="toggleStep(1)"></div>
+                <div class="step-body" onclick="showHideStep(1)">
+                  <p class="text-13-semi-bold">Customize your online store</p>
+                  <p class="text-13-medium line-19 step-info step-1-info hide">Choose a theme and add your logo, colors, and images to reflect your brand. <a href="https://help.shopify.com/en/manual/online-store/themes/customizing-themes" target="_blank">Learn more</a></p>
+                  <button class="step-1-button step-button hide" id="customizeButton">Customize theme</button>
+                </div>
+              </div>
+          
+              <div class="step-image step-1-img hide" id="image1"></div>
+            </div>
+      
+            <div class="step" id="step-2-cont">
+              <div class="step-container">
+                <div class="status-img" id="step2Img" onclick="toggleStep(2)"></div>
+                <div class="step-body" onclick="showHideStep(2)">
+                  <p class="text-13-semi-bold">Add your first product</p>
+                  <p class="text-13-medium step-info line-19 step-2-info hide">Write a description, add photos, and set pricing for the products you plan to sell.<a href="https://help.shopify.com/en/manual/products/add-update-products" target="_blank"> Learn more</a></p>
+                  <button class="step-2-button hide step-button" id="customizeButton">Add product</button>
+                </div>
+              </div>
+          
+              <div class="step-image step-2-img hide" id="image2"></div>
+            </div>
+
+            <div class="step" id="step-3-cont">
+              <div class="step-container">
+                <div class="status-img" id="step3Img" onclick="toggleStep(3)"></div>
+                <div class="step-body" onclick="showHideStep(3)">
+                  <p class="text-13-semi-bold">Add a custom domain</p>
+                  <p class="text-13-medium step-info line-19 step-3-info hide">Your current domain is 222219.myshopify.com but you can add a custom domain to help customers find your online store. <a href="https://help.shopify.com/en/manual/domains" target="_blank">Learn more</a></p>
+                  <button class="step-3-button step-button hide" id="customizeButton">Add Domain</button>
+                </div>
+              </div>
+          
+              <div class="step-image step-3-img hide" id="image3"></div>
+            </div>
+
+            <div class="step" id="step-4-cont">
+              <div class="step-container">
+                <div class="status-img" id="step4Img" onclick="toggleStep(4)"></div>
+                <div class="step-body" onclick="showHideStep(4)">
+                  <p class="text-13-semi-bold">Name your store</p>
+                  <p class="text-13-medium step-info line-19 step-4-info hide">Your temporary store name is currently Davii collections. The store name appears in your admin and your online store. <a href="https://help.shopify.com/en/manual/intro-to-shopify/initial-setup/setup-business-settings#set-or-change-your-online-store-name-and-legal-business-name" target="_blank">Learn more</a></p>
+                  <button class="step-4-button step-button hide" id="customizeButton">Name store</button>
+                </div>
+              </div>
+          
+              <div class="step-image step-4-img hide" id="image4"></div>
+            </div>
+
+            <div class="step" id="step-5-cont">
+              <div class="step-container">
+                <div class="status-img" id="step5Img" onclick="toggleStep(5)"></div>
+                <div class="step-body" onclick="showHideStep(5)">
+                  <p class="text-13-semi-bold">Set up a payment provider</p>
+                  <p class="text-13-medium line-19 step-info step-5-info hide">Choose a payment provider to start accepting payments. You’ll need to create an account with the payment provider and set it up with your Shopify store. <a href="https://help.shopify.com/en/manual/payments" target="_blank">Learn more</a></p>
+                  <button class="step-5-button step-button hide" id="customizeButton">Set up payment</button>
+                </div>
+              </div>
+          
+              <div class="step-image step-5-img hide" id="image5"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <script src="/app.js"></script>
+  </body>
+</html>
