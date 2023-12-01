@@ -31,7 +31,6 @@ function toggleStep(stepNumber) {
 
                 if (nextStepInfo.classList.contains("hide") && !currentStepInfo.classList.contains("hide")) {
                     showHideStep(next);
-                    showHideStep(stepNumber);
                 }
                 else if (nextStepInfo.classList.contains("hide") && currentStepInfo.classList.contains("hide")) {
                     showHideStep(next);
@@ -85,6 +84,7 @@ function showHideGuide(){
     }
 }
 
+var isShown = false;
 
 //Function to show and hide step guide body
 function showHideStep(stepnumber){
@@ -92,19 +92,41 @@ function showHideStep(stepnumber){
     const stepHideButton= document.querySelector(`.step-${stepnumber}-button`);
     const stepHideInfo= document.querySelector(`.step-${stepnumber}-info`);
     const stepCont = document.getElementById(`step-${stepnumber}-cont`);
+    const allImg= document.querySelectorAll(".step-image");
+    const allButton= document.querySelectorAll(".step-button");
+    const allInfo= document.querySelectorAll(".step-info");
+    const allSteps = document.querySelectorAll(".step");
+    console.log(allImg);
 
-    stepHideImg.classList.toggle("hide");
-    stepHideButton.classList.toggle("hide");
-    stepHideInfo.classList.toggle("hide");
-
-    if (stepHideInfo.classList.contains("hide")) {
-        stepCont.style.backgroundColor = "";
-    } else{
+    if (isShown == false){
+        stepHideImg.classList.remove("hide");
+        stepHideButton.classList.remove("hide");
+        stepHideInfo.classList.remove("hide");
         stepCont.style.backgroundColor = "#F3F3F3";
+        isShown = true;
+    } else if (isShown==true && stepHideInfo.classList.contains("hide")) {
+        allImg.forEach(img => img.classList.add("hide"));
+        allButton.forEach(button => button.classList.add("hide"));
+        allInfo.forEach(info => info.classList.add("hide"));
+        allSteps.forEach(step => {
+            step.style.backgroundColor = "";
+        });
+        stepHideImg.classList.remove("hide");
+        stepHideButton.classList.remove("hide");
+        stepHideInfo.classList.remove("hide");
+        stepCont.style.backgroundColor = "#F3F3F3";
+        isShown = true;
+    }
+    else if (isShown==true && !stepHideInfo.classList.contains("hide")) {
+        allImg.forEach(img => img.classList.add("hide"));
+        allButton.forEach(button => button.classList.add("hide"));
+        allInfo.forEach(info => info.classList.add("hide"));
+        stepCont.style.backgroundColor = "";
+        isShown = false;
     }
 }
 
-function hide(){
-    const hideEle = document.querySelector(".plan-container");
+function hide(elementClass){
+    const hideEle = document.querySelector(`${elementClass}`);
     hideEle.classList.add("hide");
 }
