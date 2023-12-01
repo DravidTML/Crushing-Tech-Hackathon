@@ -10,9 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
 function toggleStep(stepNumber) {
     const imgId = `step${stepNumber}Img`;
     const currentImg = document.getElementById(imgId);
-    const nextStep = `${stepNumber + 1}`;
-    console.log(nextStep);
-
+    const currentStep = document.getElementById(`step-${stepNumber}-cont`);
+    const currentStepInfo = currentStep.querySelector(`.step-info`);
+    const next = `${stepNumber + 1}`;
+    
     // Check if backgroundImage is empty
     if (!currentImg.style.backgroundImage) {
     currentImg.style.backgroundImage = 'url(\'/images/dotted-loading.svg\')';
@@ -23,13 +24,30 @@ function toggleStep(stepNumber) {
         // Toggle between dotted-loading.svg and check.svg
         if (currentImg.style.backgroundImage.includes('dotted-loading.svg')) {
             currentImg.style.backgroundImage = 'url(\'/images/check.svg\')';
+            if (next < 6){
+                const nextStep = document.getElementById(`step-${next}-cont`);
+                const nextStepInfo = nextStep.querySelector(`.step-info`);
+                console.log(nextStep);
+
+                if (nextStepInfo.classList.contains("hide") && !currentStepInfo.classList.contains("hide")) {
+                    showHideStep(next);
+                    showHideStep(stepNumber);
+                }
+                else if (nextStepInfo.classList.contains("hide") && currentStepInfo.classList.contains("hide")) {
+                    showHideStep(next);
+                }
+        
+            } else{
+                if (!currentStepInfo.classList.contains("hide")){
+                    showHideStep(stepNumber);
+                }
+            }
         } else {
             currentImg.style.backgroundImage = 'url(\'/images/dotted-loading.svg\')';
         }
 
         // Update progress based on completed steps
         updateProgress();
-        showHideStep(nextStep);
     }, 10);
 }
 
