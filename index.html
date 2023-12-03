@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,10 +21,10 @@
           <img class="search-icon" src="/images/search.svg">
         </div>
         <div class="tag">
-          <div class="tag-icon icon">
+          <div id="alert-btn" class="tag-icon icon" onclick="showPopUp('alert')">
             <img src="/images/bell.svg">
           </div>
-          <div class="tag-name">
+          <div id="menu-btn" class="tag-name" onclick="showPopUp('menu')">
             <span class="text-12-medium">Davii Collections</span>
             <div>
               <span class="text-12-medium">DC</span>
@@ -132,6 +132,59 @@
         </div>
       </div>
     </section>
+
+    <section id="menu" class="pop hide">
+      <div class="menu">
+        <div class="menu-grp fill">
+          <div class="menu-1-itm fill">
+            <div class="shop">
+              <div>
+                <span class="text-12-medium">DC</span>
+              </div>
+              <span class="text-12-medium">Davii Collections</span>
+            </div>
+          </div>
+          <div class="menu-itm fill">
+            <img src="/images/shop.svg">
+            <span class="text-13-regular">All stores</span>
+          </div>
+        </div>
+        <hr>
+        <div class="menu-grp fill">
+          <p class="text-13-regular menu-itm fill">Help Center</p>
+          <p class="text-13-regular menu-itm fill">Changelog</p>
+          <p class="text-13-regular menu-itm fill">Community forums</p>
+          <p class="text-13-regular menu-itm fill">Hire a Shopify Partner</p>
+          <p class="text-13-regular menu-itm fill">Keyboard shortcuts</p>
+        </div>
+        <hr>
+        <div class="menu-grp fill">
+          <div class="menu-itm fill">
+            <p class="text-13-regular">David Micheal</p>
+            <p class="text-12-regular" style="color: var(--gray-100);">davidmicheal@gmail.com</p>
+          </div>
+          <p class="text-13-regular menu-itm fill">Manage account</p>
+          <p class="text-13-regular menu-itm fill">Log out</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="alert" class="pop hide">
+      <div class="alert">
+        <div class="alert-itm-1">
+          <p class="text-14-semi-bold">Alerts</p>
+          <div>
+            <img src="/images/filter.svg">
+            <img src="/images/alert-check.svg">
+          </div>
+        </div>
+        <div class="alert-itm-2">
+          <p class="text-13-semi-bold">Alerts about your store and account will show here</p>
+        </div>
+      </div>
+    </section>
+
+
 
   <script src="/app.js"></script>
   </body>

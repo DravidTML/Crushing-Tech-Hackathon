@@ -142,17 +142,24 @@ section {
     color: var(--font-light);
     gap:8px;
     justify-content: center;
+    cursor: pointer;
 }
 
-.tag-name > div{
+.tag-name:hover, .tag-icon:hover{
+    background-color: var(--gray-50);
+}
+
+.tag-name > div, .shop > div{
     width: 28px;
-    padding: 9px 5px 10px 5px;
+    padding: 10px 5px;
     border-radius: 6px;
     background-color: #36FBA1;
     color: var(--gray-50);
+    display: flex;
+    align-items: centerz                       ;
 }
 
-.tag-name > div > .text-12-medium{
+.tag-name > div > .text-12-medium, .shop > div > .text-12-medium{
     width: 18px;
     height: 9px;
     line-height: 9px;
@@ -168,6 +175,7 @@ section {
 
 .tag-icon{
     background-color: var(--gray-200);
+    cursor: pointer;
 }
 
 .top_navigation_bar img{
@@ -192,11 +200,10 @@ section {
 }
 
 .search-bar:hover{
-    border-color: var(--stroke-S100);
-    border: 1px solid;
+    border: 1px solid var(--stroke-S100);
 }
 
-.search-bar:click{
+.search-bar:active{
     border: 2px solid #FFFFFF;
 }
 
@@ -340,55 +347,12 @@ section {
     cursor: pointer;
 }
 
-#step1Img {
-    background-image: url('/images/dotted-loading.svg');
-}
-
-#step2Img {
-    background-image: url('/images/dotted-loading.svg');
-}
-
-#step3Img {
-    background-image: url('/images/dotted-loading.svg');
-}
-
-#step4Img {
-    background-image: url('/images/dotted-loading.svg');
-}
-
-#step5Img {
-    background-image: url('/images/dotted-loading.svg');
-}
 
 .step-image{
     width: 120;
     height: 120px;
     background-size: cover;
     cursor: pointer;
-}
-
-#image1 {
-    background-image: url('https://crushingit.tech/hackathon-assets/customise-store.png');
-}
-
-#image2 {
-    background-image: url('https://crushingit.tech/hackathon-assets/product.png');
-}
-
-#image3 {
-    background-image: url('https://crushingit.tech/hackathon-assets/website.png');
-}
-
-#image4 {
-    background-image: url('https://crushingit.tech/hackathon-assets/name-store.png');
-}
-
-#image5 {
-    background-image: url('https://www.crushingit.tech/hackathon-assets/payment.png');
-}
-
-#guide{
-    background-image: url('/images/expand.svg');
 }
 
 .guide-img{
@@ -413,6 +377,105 @@ section {
 
 .hide{
     display: none;
+}
+
+.pop{
+    justify-content: end;
+    padding: 0 24px;
+}
+
+.menu{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: 320px;
+    top: 64px;
+    padding: 6px 0px;
+    border: 1 var(--stroke-S50) solid;
+    border-radius: 14px;
+    gap: 4px;
+    background-color: white;
+    color: var(--font-dark);
+    z-index: 1;
+}
+
+.menu-grp{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0px 6px;
+}
+
+.menu-itm{
+    padding: 6px;
+    border-radius: 8px;
+    align-items: center;
+}
+
+.menu-itm:hover{
+    background-color: var(--states-hover);
+}
+
+.menu-1-itm{
+    padding: 4px 12px 4px 8px;
+    border-radius: 8px;
+    background-color: var(--states-hover);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.shop{
+    gap: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.fill{
+    width: 100%;
+}
+
+hr {
+    width: 100%;
+    border: 0.75px solid var(--stroke-S100);
+}
+
+.alert{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: fit-content;
+    top: 64px;
+    padding: 16px;
+    border-radius: 14px;
+    border: 1px solid var(--stroke-S50);
+    gap: 16px;
+    background-color: white;
+    color: var(--font-dark);
+    z-index: 1;
+    border-radius: 14px;
+}
+
+.alert-itm-1{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: row;
+}
+
+.alert-itm-1 > div{
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.alert-itm-2{
+    padding: 16px;
+    width: fit-content;
+    background-color: var(--states-hover);
+}
+
+.alert-itm-2 > .text-13-semi-bold{
+    text-align: center;
 }
 
 @media (max-width:768px) {
@@ -465,4 +528,57 @@ section {
     .step-image{
         display: none;
     }
+    .pop{
+        padding: 0 16px;
+    }
+    .alert {
+        width: auto;
+        left: 32px;
+        transform: translate(-16px, 0);
+    }
+    
+}
+
+/*Images*/
+#image1 {
+    background-image: url('https://crushingit.tech/hackathon-assets/customise-store.png');
+}
+
+#image2 {
+    background-image: url('https://crushingit.tech/hackathon-assets/product.png');
+}
+
+#image3 {
+    background-image: url('https://crushingit.tech/hackathon-assets/website.png');
+}
+
+#image4 {
+    background-image: url('https://crushingit.tech/hackathon-assets/name-store.png');
+}
+
+#image5 {
+    background-image: url('https://www.crushingit.tech/hackathon-assets/payment.png');
+}
+
+#guide{
+    background-image: url('/images/expand.svg');
+}
+#step1Img {
+    background-image: url('/images/dotted-loading.svg');
+}
+
+#step2Img {
+    background-image: url('/images/dotted-loading.svg');
+}
+
+#step3Img {
+    background-image: url('/images/dotted-loading.svg');
+}
+
+#step4Img {
+    background-image: url('/images/dotted-loading.svg');
+}
+
+#step5Img {
+    background-image: url('/images/dotted-loading.svg');
 }

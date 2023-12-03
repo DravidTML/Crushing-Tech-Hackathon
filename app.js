@@ -130,3 +130,57 @@ function hide(elementClass){
     const hideEle = document.querySelector(`.${elementClass}`);
     hideEle.classList.add("hide");
 }
+
+var menuPopUp = document.getElementById("menu");
+var alertPopUp = document.getElementById("alert");
+var menuBtn = document.getElementById("menu-btn");
+var alertBtn = document.getElementById("alert-btn");
+
+function showPopUp(pop){
+    const popUp = document.getElementById(`${pop}`);
+    const popUpBtn = document.getElementById(`${pop}-btn`);
+    
+    if (popUp == menuPopUp) {
+        popUp.classList.remove("hide");
+        alertPopUp.classList.add("hide");
+        alertBtn.style.backgroundColor = `var(--gray-200)`;
+    } else if (popUp == alertPopUp) {
+        popUp.classList.remove("hide");
+        menuPopUp.classList.add("hide");
+        menuBtn.style.backgroundColor = `var(--gray-200)`;
+    }
+    popUpBtn.style.backgroundColor =`var(--gray-50)`;
+}
+
+document.addEventListener('click', event=> {
+    // Check if the clicked element is outside the popup
+    if (!menuPopUp.contains(event.target) && !menuPopUp.classList.contains("hide") && !menuBtn.contains(event.target) ) {
+        menuPopUp.classList.add("hide");
+        menuBtn.style.backgroundColor = `var(--gray-200)`;
+    }
+    if (!alertPopUp.contains(event.target) && !alertPopUp.classList.contains("hide") && !alertBtn.contains(event.target)) {
+        alertPopUp.classList.add("hide");
+        alertBtn.style.backgroundColor = `var(--gray-200)`;
+    }
+})
+
+alertBtn.addEventListener('mouseenter', function() {
+    this.style.backgroundColor = 'var(--gray-50)';
+});
+
+menuBtn.addEventListener('mouseenter', function() {
+    this.style.backgroundColor = 'var(--gray-50)';
+});
+
+// Reset the background color when the mouse leaves the element
+menuBtn.addEventListener('mouseleave', function() {
+    if (menuPopUp.classList.contains("hide")) {
+        this.style.backgroundColor = `var(--gray-200)`;
+    }
+});
+
+alertBtn.addEventListener('mouseleave', function() {
+    if (alertPopUp.classList.contains("hide")) {
+        this.style.backgroundColor = `var(--gray-200)`;
+    }
+});
