@@ -154,11 +154,11 @@ function showPopUp(pop){
 
 document.addEventListener('click', event=> {
     // Check if the clicked element is outside the popup
-    if (!menuPopUp.contains(event.target) && !menuPopUp.classList.contains("hide") && !menuBtn.contains(event.target) ) {
+    if (!menuPopUp.classList.contains("hide") && !menuBtn.contains(event.target) ) {
         menuPopUp.classList.add("hide");
         menuBtn.style.backgroundColor = `var(--gray-200)`;
     }
-    if (!alertPopUp.contains(event.target) && !alertPopUp.classList.contains("hide") && !alertBtn.contains(event.target)) {
+    if (!alertPopUp.classList.contains("hide") && !alertBtn.contains(event.target)) {
         alertPopUp.classList.add("hide");
         alertBtn.style.backgroundColor = `var(--gray-200)`;
     }
