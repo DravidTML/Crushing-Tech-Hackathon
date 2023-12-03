@@ -349,7 +349,7 @@ section {
 
 
 .step-image{
-    width: 120;
+    width: 120px;
     height: 120px;
     background-size: cover;
     cursor: pointer;
