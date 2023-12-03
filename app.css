@@ -478,6 +478,10 @@ hr {
     text-align: center;
 }
 
+.link{
+    cursor: pointer;
+}
+
 @media (max-width:768px) {
     #top_navigation_bar{
         gap: 8px;

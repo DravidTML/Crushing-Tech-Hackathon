@@ -14,7 +14,7 @@
   <body>
     <section>
       <div id="top_navigation_bar">
-        <div id="logo"></div>
+        <div id="logo" class="link" onclick="url('shopify.com')"></div>
 
         <div class="search-bar-container"> 
           <input type="text" class="search-bar" placeholder="Search">
@@ -38,10 +38,10 @@
         <div class="plan-container">
           <div class="plan-container-main">
             <span class="text-13-medium">Extend your trial for $1/month for 3 months on select plans.</span>  
-            <button id="plan">Select a plan</button>
+            <button id="plan" class="link" onclick="url('shopify.com/pricing')">Select a plan</button>
           </div>
           <div class="icon">
-            <img id="close" onclick="hide('plan-container')" src="/images/close.svg">
+            <img id="close" class="link" onclick="hide('plan-container')" src="/images/close.svg">
           </div>
         </div>
 
@@ -60,7 +60,7 @@
               </div>
             </div>
 
-            <div id="guide" class="guide-img" onclick="showHideGuide()"></div>
+            <div id="guide" class="guide-img link" onclick="showHideGuide()"></div>
           </div>
 
           <div class="guide-body hide">
@@ -144,27 +144,27 @@
               <span class="text-12-medium">Davii Collections</span>
             </div>
           </div>
-          <div class="menu-itm fill">
+          <div class="menu-itm link fill" onclick="url('admin.shopify.com')">
             <img src="/images/shop.svg">
             <span class="text-13-regular">All stores</span>
           </div>
         </div>
         <hr>
         <div class="menu-grp fill">
-          <p class="text-13-regular menu-itm fill">Help Center</p>
-          <p class="text-13-regular menu-itm fill">Changelog</p>
-          <p class="text-13-regular menu-itm fill">Community forums</p>
-          <p class="text-13-regular menu-itm fill">Hire a Shopify Partner</p>
-          <p class="text-13-regular menu-itm fill">Keyboard shortcuts</p>
+          <p class="text-13-regular menu-itm fill link" onclick="url('admin.shopify.com')">Help Center</p>
+          <p class="text-13-regular menu-itm link fill" onclick="url('admin.shopify.com')">Changelog</p>
+          <p class="text-13-regular menu-itm fill link" onclick="url('admin.shopify.com')">Community forums</p>
+          <p class="text-13-regular menu-itm link fill" onclick="url('admin.shopify.com')">Hire a Shopify Partner</p>
+          <p class="text-13-regular link menu-itm fill" onclick="url('admin.shopify.com')">Keyboard shortcuts</p>
         </div>
         <hr>
         <div class="menu-grp fill">
-          <div class="menu-itm fill">
+          <div class="menu-itm link fill" onclick="url('admin.shopify.com')">
             <p class="text-13-regular">David Micheal</p>
             <p class="text-12-regular" style="color: var(--gray-100);">davidmicheal@gmail.com</p>
           </div>
-          <p class="text-13-regular menu-itm fill">Manage account</p>
-          <p class="text-13-regular menu-itm fill">Log out</p>
+          <p class="text-13-regular menu-itm fill link" onclick="url('admin.shopify.com')">Manage account</p>
+          <p class="text-13-regular menu-itm fill link" onclick="url('admin.shopify.com')">Log out</p>
         </div>
       </div>
     </section>

@@ -184,3 +184,9 @@ alertBtn.addEventListener('mouseleave', function() {
         this.style.backgroundColor = `var(--gray-200)`;
     }
 });
+
+function url(url) {
+    const page = `https://${url}`;
+
+    window.open(page, '_blank')
+}
