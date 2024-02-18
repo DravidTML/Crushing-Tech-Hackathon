@@ -545,23 +545,23 @@ hr {
 
 /*Images*/
 #image1 {
-    background-image: url('https://crushingit.tech/hackathon-assets/customise-store.png');
+    background-image: url('/images/img_1.png');
 }
 
 #image2 {
-    background-image: url('https://crushingit.tech/hackathon-assets/product.png');
+    background-image: url('/images/img_2.png');
 }
 
 #image3 {
-    background-image: url('https://crushingit.tech/hackathon-assets/website.png');
+    background-image: url('images/img_3.png');
 }
 
 #image4 {
-    background-image: url('https://crushingit.tech/hackathon-assets/name-store.png');
+    background-image: url('images/img_4.png');
 }
 
 #image5 {
-    background-image: url('https://www.crushingit.tech/hackathon-assets/payment.png');
+    background-image: url('images/img_5.png');
 }
 
 #guide{
