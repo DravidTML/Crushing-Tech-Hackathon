@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+        label, input, button {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #0062CC;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #004a99;
+        }
+    </style>
+</head>
+<body>
+    <h1>Register Your Phone Number</h1>
+    <form id="phoneForm">
+        <label for="phone">Phone Number (with country code):</label>
+        <input type="text" id="phone" name="phone" placeholder="+234..." required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        // Ensure Telegram WebApp is available
+        if (window.Telegram.WebApp) {
+            // Initialize Web App
+            const tg = window.Telegram.WebApp;
+            tg.expand(); // Expands the WebApp to full-screen
+
+            // Form submission event
+            const form = document.getElementById('phoneForm');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent normal form submission
+
+                // Get the phone number from the form
+                const phoneNumber = document.getElementById('phone').value;
+
+                // Validate the phone number
+                if (!phoneNumber.startsWith('+')) {
+                    alert('Please include the country code (e.g., +234).');
+                    return;
+                }
+
+                // Send the phone number to the bot
+                tg.sendData(JSON.stringify({ phone: phoneNumber }));
+
+                // Notify the user
+                alert('Phone number submitted! Returning to bot...');
+                tg.close(); // Closes the WebApp
+            });
+        } else {
+            alert("Telegram WebApp is not available!");
+        }
+    </script>
+</body>
+</html>
