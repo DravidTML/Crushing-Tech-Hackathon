@@ -52,49 +52,53 @@
             background-color: #004a99;
         }
     </style>
-</head>
-<body>
-    <div class="content">
-        <h1>Register Your Phone Number</h1>
-        <form id="phoneForm">
-            <label for="phone">Phone Number (with country code):</label>
-            <input type="text" id="phone" name="phone" placeholder="+234..." required>
-            <button type="submit">Submit</button>
-        </form>
-    </div>
-
     <script>
-        (function () {
-            // Initialize Telegram WebApp
-            const tg = window.Telegram.WebApp;
-
-            if (!tg) {
-                alert("Telegram WebApp is not available!");
+        // Function to send data to Telegram bot and close the web app
+        function sendDataToTelegram() {
+            const phoneNumber = document.getElementById("phone-number").value; // Get the phone number input
+            
+            // Validate that the phone number is entered
+            if (!phoneNumber) {
+                alert("Please enter your phone number!");
                 return;
             }
 
-            tg.expand(); // Expand the Web App to full screen
+            // Log for debugging purposes
+            console.log("Sending data to Telegram:", phoneNumber);
 
-            // Form submission logic
-            document.getElementById('phoneForm').addEventListener('submit', function (event) {
-                event.preventDefault(); // Prevent default form submission
+            // Send the phone number to the Telegram bot
+            Telegram.WebApp.sendData(JSON.stringify({ phone: phoneNumber }));
 
-                const phoneNumber = document.getElementById('phone').value;
+            // Log closing action
+            console.log("Closing Web App");
 
-                // Validate phone number format
-                if (!phoneNumber.startsWith('+')) {
-                    alert('Please include the country code (e.g., +234).');
-                    return;
-                }
+            // Close the web app
+            Telegram.WebApp.close();
+        }
 
-                // Send data to Telegram bot
-                tg.sendData(JSON.stringify({ phone: phoneNumber }));
-
-                // Notify the user and close the WebApp
-                alert('Phone number submitted! Returning to the bot...');
-                tg.close();
+        // Add event listener to the submit button
+        document.addEventListener("DOMContentLoaded", function () {
+            const submitButton = document.getElementById("submit-button");
+            submitButton.addEventListener("click", function (event) {
+                event.preventDefault(); // Prevent page refresh
+                sendDataToTelegram(); // Call the sendDataToTelegram function
             });
-        })();
+        });
     </script>
+</head>
+<body>
+    <div class="content">
+        <h2>Register Your Phone Number</h2>
+        <form id="webapp-form">
+            <!-- Label-->
+            <label>Phone Number (with country code)</label>
+
+            <!-- Phone Number Input Field -->
+            <input type="text" id="phone-number" placeholder="Enter your phone number" required />
+    
+            <!-- Submit Button -->
+            <button type="submit" id="submit-button">Submit</button>
+        </form>
+    </div>
 </body>
 </html>
