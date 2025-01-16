@@ -5,19 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Registration</title>
     <style>
+        *{
+            margin: 0;
+        }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
-            margin-top: 50px;
+            padding-top: 100px;
             color:white;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 0.5rem;
+            background-color: darkgray;
+        }
+        content{
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-width: 300px;
+            height: fit-content;
+            background-color: #333333;
+            padding: 1rem;
+            border-radius: 1rem;
         }
         form {
-            display: inline-block;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
             text-align: left;
         }
-        label, input, button {
-            display: block;
-            margin: 10px 0;
+        input{
+            border: none;
+            padding: 12px 8px;
+            border-radius: 0.5rem;
         }
         button {
             background-color: #0062CC;
@@ -25,7 +46,8 @@
             border: none;
             padding: 10px 20px;
             cursor: pointer;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
+            width: 100%;
         }
         button:hover {
             background-color: #004a99;
@@ -33,12 +55,14 @@
     </style>
 </head>
 <body>
-    <h1>Register Your Phone Number</h1>
-    <form id="phoneForm">
-        <label for="phone">Phone Number (with country code):</label>
-        <input type="text" id="phone" name="phone" placeholder="+234..." required>
-        <button type="submit">Submit</button>
-    </form>
+    <div class="content">
+        <h1>Register Your Phone Number</h1>
+        <form id="phoneForm">
+            <label for="phone">Phone Number (with country code):</label>
+            <input type="text" id="phone" name="phone" placeholder="+234..." required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
 
     <script>
         // Ensure Telegram WebApp is available
