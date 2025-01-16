@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Registration</title>
     <style>
-        *{
+        * {
             margin: 0;
         }
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding-top: 100px;
-            color:white;
+            color: white;
             display: flex;
             align-items: center;
             flex-direction: column;
             gap: 0.5rem;
             background-color: rgb(95, 90, 90);
         }
-        .content{
+        .content {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
@@ -34,7 +34,7 @@
             gap: 0.5rem;
             text-align: left;
         }
-        input{
+        input {
             border: none;
             padding: 12px 8px;
             border-radius: 0.5rem;
@@ -64,36 +64,37 @@
     </div>
 
     <script>
-        // Ensure Telegram WebApp is available
-        if (window.Telegram.WebApp) {
-            // Initialize Web App
+        (function () {
+            // Initialize Telegram WebApp
             const tg = window.Telegram.WebApp;
-            tg.expand(); // Expands the WebApp to full-screen
 
-            // Form submission event
-            const form = document.getElementById('phoneForm');
-            form.addEventListener('submit', function(event) {
-                event.preventDefault(); // Prevent normal form submission
+            if (!tg) {
+                alert("Telegram WebApp is not available!");
+                return;
+            }
 
-                // Get the phone number from the form
+            tg.expand(); // Expand the Web App to full screen
+
+            // Form submission logic
+            document.getElementById('phoneForm').addEventListener('submit', function (event) {
+                event.preventDefault(); // Prevent default form submission
+
                 const phoneNumber = document.getElementById('phone').value;
 
-                // Validate the phone number
+                // Validate phone number format
                 if (!phoneNumber.startsWith('+')) {
                     alert('Please include the country code (e.g., +234).');
                     return;
                 }
 
-                // Send the phone number to the bot
+                // Send data to Telegram bot
                 tg.sendData(JSON.stringify({ phone: phoneNumber }));
 
-                // Notify the user
-                alert('Phone number submitted! Returning to bot...');
-                tg.close(); // Closes the WebApp
+                // Notify the user and close the WebApp
+                alert('Phone number submitted! Returning to the bot...');
+                tg.close();
             });
-        } else {
-            alert("Telegram WebApp is not available!");
-        }
+        })();
     </script>
 </body>
 </html>
