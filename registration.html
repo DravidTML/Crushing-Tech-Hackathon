@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Phone Registration</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
         * {
             margin: 0;
@@ -52,53 +53,40 @@
             background-color: #004a99;
         }
     </style>
-    <script>
-        // Function to send data to Telegram bot and close the web app
-        function sendDataToTelegram() {
-            const phoneNumber = document.getElementById("phone-number").value; // Get the phone number input
-            
-            // Validate that the phone number is entered
-            if (!phoneNumber) {
-                alert("Please enter your phone number!");
-                return;
-            }
-
-            // Log for debugging purposes
-            console.log("Sending data to Telegram:", phoneNumber);
-
-            // Send the phone number to the Telegram bot
-            Telegram.WebApp.sendData(JSON.stringify({ phone: phoneNumber }));
-
-            // Log closing action
-            console.log("Closing Web App");
-
-            // Close the web app
-            Telegram.WebApp.close();
-        }
-
-        // Add event listener to the submit button
-        document.addEventListener("DOMContentLoaded", function () {
-            const submitButton = document.getElementById("submit-button");
-            submitButton.addEventListener("click", function (event) {
-                event.preventDefault(); // Prevent page refresh
-                sendDataToTelegram(); // Call the sendDataToTelegram function
-            });
-        });
-    </script>
 </head>
 <body>
     <div class="content">
         <h2>Register Your Phone Number</h2>
         <form id="webapp-form">
-            <!-- Label-->
             <label>Phone Number (with country code)</label>
-
-            <!-- Phone Number Input Field -->
             <input type="text" id="phone-number" placeholder="Enter your phone number" required />
-    
-            <!-- Submit Button -->
             <button type="submit" id="submit-button">Submit</button>
         </form>
     </div>
+
+    <script>
+        // Initialize Telegram WebApp
+        const webapp = window.Telegram.WebApp;
+        webapp.ready();
+
+        // Get user_id from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('user_id');
+
+        document.getElementById('webapp-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const phoneNumber = document.getElementById('phone-number').value;
+            
+            // Send the phone number back to the bot
+            webapp.sendData(JSON.stringify({
+                user_id: userId,
+                phone_number: phoneNumber
+            }));
+            
+            // Close the WebApp
+            webapp.close();
+        });
+    </script>
 </body>
 </html>
