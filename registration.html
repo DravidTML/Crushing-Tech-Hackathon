@@ -82,7 +82,7 @@
         // Get user_id from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
-        const BOT_TOKEN = '7538228712:AAG4KCrSgUbeOSpas7y4w9BfQMsW6pCLJVw';
+        const BOT_TOKEN = urlParams.get('bot_token');
 
         function showStatus(message, isError = false) {
             const statusElement = document.getElementById('status-message');
