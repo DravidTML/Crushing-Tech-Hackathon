@@ -71,11 +71,9 @@
     </div>
 
     <script>
-        // Initialize Telegram WebApp
         const webapp = window.Telegram.WebApp;
         webapp.ready();
 
-        // Get user_id from URL parameters
         const urlParams = new URLSearchParams(window.location.search);
         const userId = urlParams.get('user_id');
         const BOT_TOKEN = urlParams.get('bot_token');
@@ -94,8 +92,10 @@
             const submitButton = document.getElementById('submit-button');
             submitButton.disabled = true;
             
+            // Directly send registration data as a command to the bot
+            const registrationCommand = `/register_phone ${phoneNumber}`;
+            
             try {
-                // Send a message to the bot with registration data as JSON
                 const response = await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                     method: 'POST',
                     headers: {
@@ -103,15 +103,12 @@
                     },
                     body: JSON.stringify({
                         chat_id: userId,
-                        text: JSON.stringify({
-                            user_id: userId,
-                            phone_number: phoneNumber
-                        })
+                        text: registrationCommand
                     })
                 });
 
                 if (!response.ok) {
-                    throw new Error('Failed to send message to bot');
+                    throw new Error('Failed to send registration');
                 }
 
                 showStatus('Registration successful! You can close this window.');
